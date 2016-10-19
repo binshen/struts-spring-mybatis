@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="struts-spring-mybatis:war exploded">
+    <output-path>$PROJECT_DIR$/target/struts-spring-mybatis</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="struts-spring-mybatis" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/struts-spring-mybatis/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="struts-spring-mybatis/web/Web" />
+    </root>
+  </artifact>
+</component>
