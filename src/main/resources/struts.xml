@@ -30,10 +30,11 @@
     	<action name="todo" class="com.moral.controller.TodoController">
     		<result name="index">/WEB-INF/views/index.jsp</result>
 			<result name="edit">/WEB-INF/views/edit.jsp</result>
-			<result name="add" type="redirectAction"><param name="actionName">index</param></result>
-			<result name="save" type="redirectAction"><param name="actionName">index</param></result>
-			<result name="delete" type="redirectAction"><param name="actionName">index</param></result>
-			<result name="finish" type="redirectAction"><param name="actionName">index</param></result>
+			<result name="add" type="redirect">/todo!index.do</result>
+			<result name="save" type="redirect">/todo!index.do</result>
+			<result name="delete" type="redirect">/todo!index.do</result>
+			<result name="finish" type="redirect">/todo!index.do</result>
+			<allowed-methods>edit,add,finish</allowed-methods>
     	</action>
 	</package>
 

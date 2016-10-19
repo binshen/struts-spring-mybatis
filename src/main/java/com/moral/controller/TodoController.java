@@ -2,11 +2,23 @@ package com.moral.controller;
 
 import com.moral.model.Todo;
 import com.moral.service.TodoService;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
-public class TodoController extends BaseAction {
+
+public class TodoController extends ActionSupport implements ServletRequestAware {
+
+    public List<Todo> todoList;
+    public Todo todo;
+    public String site_name = "TODO List";
+
+    private HttpServletRequest request;
 
     @Autowired
     TodoService todoService;
@@ -51,10 +63,7 @@ public class TodoController extends BaseAction {
         return "finish";
     }
 
-    //public int id;
-    //public int status;
-    //public String title;
-    public List<Todo> todoList;
-    public Todo todo;
-    public String site_name = "TODO List";
+    public void setServletRequest(HttpServletRequest request) {
+        this.request = request;
+    }
 }

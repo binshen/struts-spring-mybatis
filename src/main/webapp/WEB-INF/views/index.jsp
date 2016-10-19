@@ -24,17 +24,17 @@
                             <c:when test="${todo.finished == 1}">
                                 <li>
                                     <del>${todo.title}</del>&nbsp;
-                                    <a href="/todo/${todo.id}/finish/0">恢复</a>,
-                                    <a href="/todo/${todo.id}/edit">修改</a>,
-                                    <a href="/todo/${todo.id}/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+                                    <a href="/todo!finish.do?id=${todo.id}&status=0">恢复</a>,
+                                    <a href="/todo!edit.do?id=${todo.id}">修改</a>,
+                                    <a href="/todo!delete.do?id=${todo.id}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
                                 </li>
                             </c:when>
                             <c:otherwise>
                                 <li class="finished">
                                     ${todo.title}&nbsp;
-                                    <a href="/todo/${todo.id}/finish/1">完成</a>,
-                                    <a href="/todo/${todo.id}/edit">修改</a>,
-                                    <a href="/todo/${todo.id}/delete" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+                                    <a href="/todo!finish.do?id=${todo.id}&status=1">完成</a>,
+                                    <a href="/todo!edit.do?id=${todo.id}">修改</a>,
+                                    <a href="/todo!delete.do?id=${todo.id}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
                                 </li>
                             </c:otherwise>
                         </c:choose>
@@ -45,7 +45,7 @@
 
             <div class="box post">
                 <h2>新增</h2>
-                <form action="/todo/new" method="post" id="post_new">
+                <form action="/todo!add.do" method="post" id="post_new">
                     <p><input type="text" name="title" class="long_txt" /></p>
                     <p><input type="submit" class="submit" value="添加" /></p>
                 </form>
