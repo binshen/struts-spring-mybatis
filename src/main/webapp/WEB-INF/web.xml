@@ -8,7 +8,7 @@
   <!-- spring配置文件位置 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml,classpath:spring-mvc.xml,classpath:spring-database.xml,classpath:spring-aop.xml</param-value>
+    <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
   <!-- Struts2配置 -->

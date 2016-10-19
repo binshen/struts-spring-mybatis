@@ -3,63 +3,58 @@ package com.moral.controller;
 import com.moral.model.Todo;
 import com.moral.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class TodoController extends BaseAction {
 
     @Autowired
     TodoService todoService;
 
-    public String execute(){
-        return SUCCESS;
-    }
-
-    public String index(HttpServletRequest request, Map model) {
-        //List<Todo> todoList = todoService.selectTodoList();
-        //model.put("todoList", todoList);
-        //model.put("site_name", "TODO List");
+    public String index() {
+        todoList = todoService.selectTodoList();
         return "index";
     }
 
-    public String add(HttpServletRequest request, Map model) {
+    public String add() {
         Todo todo = new Todo();
         todo.setTitle(request.getParameter("title"));
         todo.setPost_date(new Date());
         todo.setFinished(0);
         todoService.insertTodo(todo);
-        return "redirect:/todo/index";
+        return "add";
     }
 
-    public String edit(@PathVariable("id") int id, Map model) {
-        model.put("site_name", "TODO List");
-        model.put("todo", todoService.selectTodo(id));
+    public String edit() {
+        todo = todoService.selectTodo(Integer.valueOf(request.getParameter("id")));
         return "edit";
     }
 
-    public String save(@PathVariable("id") int id, HttpServletRequest request, Map model) {
+    public String save() {
         Todo todo = new Todo();
-        todo.setId(id);
+        todo.setId(Integer.valueOf(request.getParameter("id")));
         todo.setTitle(request.getParameter("title"));
         todoService.updateTitle(todo);
-        return "redirect:/todo/index";
+        return "save";
     }
 
-    public String delete(@PathVariable("id") int id, Map model) {
-        todoService.deleteTodo(id);
-        return "redirect:/todo/index";
+    public String delete() {
+        todoService.deleteTodo(Integer.valueOf(request.getParameter("id")));
+        return "delete";
     }
 
-    public String finish(@PathVariable("id") int id, @PathVariable("status") int status, Map model) {
+    public String finish() {
         Todo todo = new Todo();
-        todo.setId(id);
-        todo.setFinished(status);
+        todo.setId(Integer.valueOf(request.getParameter("id")));
+        todo.setFinished(Integer.valueOf(request.getParameter("status")));
         todoService.updateStatus(todo);
-        return "redirect:/todo/index";
+        return "finish";
     }
+
+    //public int id;
+    //public int status;
+    //public String title;
+    public List<Todo> todoList;
+    public Todo todo;
+    public String site_name = "TODO List";
 }

@@ -1,1 +1,1 @@
-<% response.setHeader("Refresh","1;url=/todo/index"); %>
+<% response.setHeader("Refresh","1;url=/todo!index.do"); %>
